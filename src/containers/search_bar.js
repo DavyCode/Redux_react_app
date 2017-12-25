@@ -19,9 +19,13 @@ class SearchBar extends Component {
 
     onFormSubmit(e){
         e.preventDefault();
-
-        this.props.fetchWeather(this.state.term);
-        this.setState({ term: ''});
+        
+        if(this.state.term.length > 0){
+            this.props.fetchWeather(this.state.term);
+            this.setState({ term: ''}) 
+        }else{
+            alert('please type is a correct city!!!')
+        }
     }
 
     render(){
@@ -35,7 +39,7 @@ class SearchBar extends Component {
                      onChange={this.onInputChange}
                      />
                     <span className='input-group-btn'>
-                    <button type="button" className="btn btn-secondary">Search</button>
+                    <button type="submit" className="btn btn-secondary">Search</button>
                     </span> 
                 </ form>
             </div>
