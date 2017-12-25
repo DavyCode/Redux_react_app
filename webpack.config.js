@@ -22,6 +22,6 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './',
-    stats : "minimal"
+    stats : "normal"
   }
 };

@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class WeatherList extends Component {
     
     renderWeather(data){
         if(data){
-            const name = data.city.name;
-            const country = data.city.country;
-            const temp = data.list[0].main.temp
-            const pressure = data.list[0].main.pressure
-            const humidity = data.list[0].main.humidity
-            const description = data.list[0].weather[0].description
-            let key = 1; 
+            const {name, country}= data.city;
+            const temps = data.list.map( weather => weather.main.temp);
+            let key = Math.random(); 
 
             console.log('data is :',data.list)
             return ( 
-                <tr key={name} >
-                    <td scope="row"> { name} : {country} </td>
-                    <td scope="row"> { temp } </td>
-                    <td scope="row"> { pressure } </td>
-                    <td scope="row"> { humidity } </td>
-                    <td scope="row"> { description} </td>
+                <tr key={key} >
+                    <td scope="row"> { name} | {country} </td>
+                    <td scope="row"> 
+                        <Sparklines data={temps} width={180} height={120} margin={5}>
+                            <SparklinesLine color="red" />
+                        </Sparklines>
+                    {temps} 
+                    </td>
                 </tr>
             );
         }
