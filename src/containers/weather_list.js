@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Chart from '../components/chart'
+import GoogleMap from '../components/google_map'
+
 class WeatherList extends Component {
     
     renderWeather(data){
@@ -11,7 +13,7 @@ class WeatherList extends Component {
             const humidity = data.list.map( weather => weather.main.humidity);
             const description   = data.list.map( weather => weather.weather[0].description);
             const descriptionTitle   = data.list.map( weather => weather.weather[0].main);
-        
+            const {lon, lat}= data.city.coord;
             let key = Math.random(); 
 
             console.log('description is :', description)
@@ -29,6 +31,7 @@ class WeatherList extends Component {
                             </div>
                         </div>    
                     </td>
+                    <td scope="row"> <GoogleMap lon={lon} lat={lat} /></td>
                 </tr>
             );
         }
@@ -39,7 +42,7 @@ class WeatherList extends Component {
             <div>
                 <table className="table table-hover">
                     <thead>
-                        <tr><th>City | Country(US)</th><th>Temperature (C)</th><th>Pressure (hPa)</th><th>Humidity (%)</th><th>Description</th></tr>      
+                        <tr><th>City | Country(US)</th><th>Temperature (C)</th><th>Pressure (hPa)</th><th>Humidity (%)</th><th>Description</th><th>Location (Map)</th></tr>      
                     </thead>
                     
                     <tbody>
