@@ -18,9 +18,9 @@ class WeatherList extends Component {
             return ( 
                 <tr key={key} >
                     <td scope="row"> { name } | {country} </td>
-                    <td scope="row"> <Chart data={temps} color='orange'/></td>
-                    <td scope="row"> <Chart data={pressure} color='green'/></td>
-                    <td scope="row"> <Chart data={humidity} color='black'/></td>
+                    <td scope="row"> <Chart data={temps} color='orange' units='C'/></td>
+                    <td scope="row"> <Chart data={pressure} color='green' units='hPa'/></td>
+                    <td scope="row"> <Chart data={humidity} color='black'units='%'/></td>
                     <td scope="row"> 
                         <div className="card text-center">
                             <div className="card-body">
@@ -39,7 +39,7 @@ class WeatherList extends Component {
             <div>
                 <table className="table table-hover">
                     <thead>
-                        <tr><th>City</th><th>Temperature</th><th>Pressure</th><th>Humidity</th><th>Description</th></tr>      
+                        <tr><th>City | Country(US)</th><th>Temperature (C)</th><th>Pressure (hPa)</th><th>Humidity (%)</th><th>Description</th></tr>      
                     </thead>
                     
                     <tbody>
