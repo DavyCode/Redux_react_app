@@ -1,13 +1,13 @@
-# ReduxSimpleStarter
-
+# ReduxReduxapp
+A simple weather forcast app
 
 ### Getting Started
 
-#### Familiar with Git?
-
 ```
-> git clone https://github.com/davycode/ReduxSimpleweatherapp.git
-> cd ReduxSimpleweatherapp
+> git clone https://github.com/davycode/Redux_redux_app.git
+> cd Redux_redux_app
 > npm install
 > npm start
 ```
+
+
