@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Sparklines, SparklinesLine } from 'react-sparklines';
-
+import Chart from '../components/chart'
 class WeatherList extends Component {
     
     renderWeather(data){
         if(data){
             const {name, country}= data.city;
             const temps = data.list.map( weather => weather.main.temp);
+            const pressure = data.list.map( weather => weather.main.pressure);
+            const humidity = data.list.map( weather => weather.main.humidity);
+            const description   = data.list.map( weather => weather.weather[0].description);
+            const descriptionTitle   = data.list.map( weather => weather.weather[0].main);
+        
             let key = Math.random(); 
 
-            console.log('data is :',data.list)
+            console.log('description is :', description)
             return ( 
                 <tr key={key} >
-                    <td scope="row"> { name} | {country} </td>
+                    <td scope="row"> { name } | {country} </td>
+                    <td scope="row"> <Chart data={temps} color='orange'/></td>
+                    <td scope="row"> <Chart data={pressure} color='green'/></td>
+                    <td scope="row"> <Chart data={humidity} color='black'/></td>
                     <td scope="row"> 
-                        <Sparklines data={temps} width={180} height={120} margin={5}>
-                            <SparklinesLine color="red" />
-                        </Sparklines>
-                    {temps} 
+                        <div className="card text-center">
+                            <div className="card-body">
+                                <h4 className="card-title">{descriptionTitle.slice(0,1)}</h4>
+                                <p className="card-text">{description.slice(0,1)}</p>
+                            </div>
+                        </div>    
                     </td>
                 </tr>
             );
